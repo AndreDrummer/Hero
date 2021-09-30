@@ -16,6 +16,7 @@ class FlutterHero extends StatelessWidget {
     );
     return const MaterialApp(
       title: 'FlutterHero',
+      debugShowCheckedModeBanner: false,
       home: GameScreen(),
     );
   }

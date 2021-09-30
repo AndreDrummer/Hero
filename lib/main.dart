@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hero/core/game_core.dart';
+import 'package:hero/core/input_controller.dart';
 
 void main() => runApp(const FlutterHero());
 
@@ -91,8 +92,8 @@ class GameScreenState extends State with TickerProviderStateMixin {
 
     return Scaffold(
       body: GestureDetector(
-        onPanStart: InputController.onPanStart,
         onPanUpdate: InputController.onPanUpdate,
+        onPanStart: InputController.onPanStart,
         onPanEnd: InputController.onPanEnd,
         child: Stack(
           children: stackChildren,

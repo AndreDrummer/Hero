@@ -1,11 +1,12 @@
 import 'dart:math';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:hero/core/input_controller.dart';
 import 'package:hero/core/models/enemy.dart';
 import 'package:hero/core/models/game_object.dart';
 import 'package:hero/core/models/player.dart';
 
-late AnimationController gameLoopController;
+AnimationController? gameLoopController;
 late Animation gameLoopAnimation;
 Random random = Random();
 late double screenHeight;
@@ -220,15 +221,15 @@ void firstTimeInitialization(BuildContext inContext, dynamic inState) {
   );
   gameLoopAnimation = Tween(begin: 0, end: 17).animate(
     CurvedAnimation(
-      parent: gameLoopController,
+      parent: gameLoopController!,
       curve: Curves.linear,
     ),
   );
 
   gameLoopAnimation.addStatusListener((inStatus) {
     if (inStatus == AnimationStatus.completed) {
-      gameLoopController.reset();
-      gameLoopController.forward();
+      gameLoopController!.reset();
+      gameLoopController!.forward();
     }
   });
 
@@ -238,7 +239,7 @@ void firstTimeInitialization(BuildContext inContext, dynamic inState) {
 
   InputController.init(player);
 
-  gameLoopController.forward();
+  gameLoopController!.forward();
 }
 
 void resetGame(bool inResetEnemies) {
